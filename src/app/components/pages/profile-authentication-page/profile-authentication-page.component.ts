@@ -21,7 +21,7 @@ export class ProfileAuthenticationPageComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem('usuario')){
-      this.router.navigate(['/admin']);
+      //this.router.navigate(['/admin']);
       this.showNotification('success', 'Acesso Correcto');
     }
   }
