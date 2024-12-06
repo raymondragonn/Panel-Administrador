@@ -1,0 +1,46 @@
+<!-- Navbar Area -->
+<div
+    class="navbar-area"
+    [ngClass]="{'navbar-style-two': router.url === '/admin' || router.url === '/admin', 'sticky': isSticky}"
+>
+    <div class="container-fluid" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" [class.active]="classApplied">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">      
+                    <li class="nav-item">
+                        <a routerLink="/login" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Cerrar sesión
+                        </a>
+                </ul>
+                <ul class="navbar-nav for-responsive">
+                    <li class="nav-item">
+                        <a href="/admin" ><!--class="dropdown-toggle nav-link"-->
+                            Inicio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- Search Overlay -->
+<div class="search-overlay" [class.search-overlay-active]="searchClassApplied">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-close" (click)="searchToggleClass()">
+                <span class="search-overlay-close-line"></span>
+                <span class="search-overlay-close-line"></span>
+            </div>
+            <div class="search-overlay-form">
+                <form>
+                    <input type="text" class="input-search" placeholder="Enter your keywords...">
+                    <button type="submit"><i class="flaticon-035-magnifying-glass"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
