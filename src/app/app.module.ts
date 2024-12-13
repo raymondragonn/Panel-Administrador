@@ -21,6 +21,7 @@ import { TopHeaderComponent } from './components/common/top-header/top-header.co
 import { ProfileAuthenticationPageComponent } from './components/pages/profile-authentication-page/profile-authentication-page.component';
 import { ServicesListComponent } from './components/pages/services-list/services-list.component';
 import { FormularioEditComponent } from './components/pages/formulario-edit/formulario-edit.component';
+import { RegistroUsuarioComponent } from './components/pages/registro-usuario/registro-usuario.component';
 //import { EmailService } from './common/services/email.service';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FormularioEditComponent } from './components/pages/formulario-edit/form
         TopHeaderComponent,
         ProfileAuthenticationPageComponent,
         ServicesListComponent,
-        FormularioEditComponent
+        FormularioEditComponent,
+        RegistroUsuarioComponent
     ],
     imports: [
         BrowserModule,

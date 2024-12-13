@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    apiLocal: 'http://localhost/apiAixa/index.php'
+    apiLocal: 'http://localhost:3000/api/v1'
     //apiLocal: '127.0.0.1:3000/api/v1'
   };
   

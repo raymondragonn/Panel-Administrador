@@ -5,6 +5,7 @@ import { ProfileAuthenticationPageComponent } from './components/pages/profile-a
 import { ServicesListComponent } from './components/pages/services-list/services-list.component';
 import { FormularioEditComponent } from './components/pages/formulario-edit/formulario-edit.component';
 import { authGuard } from './guards/auth-guard.guard';
+import { RegistroUsuarioComponent } from './components/pages/registro-usuario/registro-usuario.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path: 'admin', component: ServicesListComponent,canActivate: [authGuard]},
   {path: 'formulario/:id', component: FormularioEditComponent,canActivate: [authGuard]},
   {path: 'formulario', component: FormularioEditComponent,canActivate: [authGuard]},
-
+  {path: 'register', component: RegistroUsuarioComponent},
   {path: '**', component: NotFoundComponent} 
 ];
 

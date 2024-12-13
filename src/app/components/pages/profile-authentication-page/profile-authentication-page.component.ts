@@ -20,10 +20,7 @@ export class ProfileAuthenticationPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('usuario')){
-      //this.router.navigate(['/admin']);
-      this.showNotification('success', 'Acesso Correcto');
-    }
+    
   }
   public showNotification( type: string, message: string ): void {
 		this.notifier.notify( type, message );
@@ -48,8 +45,6 @@ export class ProfileAuthenticationPageComponent implements OnInit {
       })
     }
 
-
-
     // //Checa si existe el usuario
     // this.userService.existsUser('hola').subscribe( data => {
     //   this.showNotification('success', 'Acesso Correct');
@@ -58,5 +53,9 @@ export class ProfileAuthenticationPageComponent implements OnInit {
     // })
   
 
+  }
+
+  crearCuenta(){
+    this.router.navigate(['/register']);
   }
 }

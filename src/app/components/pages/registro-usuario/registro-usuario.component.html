@@ -4,14 +4,21 @@
         <div class="row" style="justify-content: center;">
             <div class="col-lg-6 col-md-12">
                 <div class="login-form">
-                    <h2 style="text-align: center; margin-bottom: 0%;">Bienvenido</h2>
-                    <p style="text-align: center; margin-bottom: 8%;">Ingresa tus datos para <span style="font-weight: bold;">iniciar sesión.</span></p>
-                    <form [formGroup]="formLogin" (ngSubmit)="mandarFormulario()">
+                    <h2 style="text-align: center; margin-bottom: 0%;">Crea una Cuenta</h2>
+                    <p style="text-align: center; margin-bottom: 8%;">Ingresa tus datos para <span style="font-weight: bold;">Crear cuenta</span></p>
+                    <form [formGroup]="formLogin" (ngSubmit)="crearCuenta()">
                         <div class="form-group">
                             <!--<label>Usuario</label>-->
-                            <input type="text" formControlName="userName" class="form-control" placeholder="Usuario">
-                            <div *ngIf="formLogin.get('userName')?.invalid && formLogin.get('userName')?.touched" class="text-danger">
-                                <span style="font-style: italic;">Ingresa tu usuario</span>
+                            <input type="text" formControlName="name" class="form-control" placeholder="Nombre">
+                            <div *ngIf="formLogin.get('name')?.invalid && formLogin.get('name')?.touched" class="text-danger">
+                                <span style="font-style: italic;">Ingresa un nombre</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <!--<label>Usuario</label>-->
+                            <input type="text" formControlName="email" class="form-control" placeholder="Email">
+                            <div *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched" class="text-danger">
+                                <span style="font-style: italic;">Ingresa tu email</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -22,6 +29,14 @@
                                 <span style="font-style: italic;">Ingresa tu contraseña</span>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <!--<label>Contraseña</label>-->
+                            <input type="password" formControlName="repeatPassword" class="form-control" placeholder="Repite Contraseña">
+                            <div *ngIf="formLogin.get('repeatPassword')?.invalid && formLogin.get('repeatPassword')?.touched" class="text-danger">
+                                
+                                <span style="font-style: italic;">Repite la Contraseña</span>
+                            </div>
+                        </div>
                         <!-- <div class="row align-items-center">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6 remember-me-wrap">
                                 <div class="form-check">
@@ -30,10 +45,10 @@
                             </div>
                             
                         </div> -->
-                        <div class="row align-items-center " style="margin-bottom: 1rem;  " (click)="crearCuenta()" >
-                            <span style="cursor: pointer; color: blue;">¿No tienes cuenta? crea una</span>
+                        <div class="row align-items-center " style="margin-bottom: 1rem;  " (click)="IniciarSession()" >
+                            <span style="cursor: pointer; color: blue;">Ya tengo Cuenta</span>
                         </div>
-                        <button type="submit" style="width: 50%; display: block; margin: 0 auto;">Ingresar</button>
+                        <button type="submit" style="width: 50%; display: block; margin: 0 auto;">Crear Cuenta</button>
                     </form>
                 </div>
             </div>
