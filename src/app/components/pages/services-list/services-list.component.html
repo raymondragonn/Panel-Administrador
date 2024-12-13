@@ -43,7 +43,7 @@
                         <tr *ngFor="let servicio of servicios">
                             <td class="product-thumbnail">
                                 <a routerLink="/product-details">
-                                    <img [src]="servicio.img" alt="product-image">
+                                    <img [src]="servicio.images.primary" alt="product-image">
                                 </a>
                             </td>
                             <td>{{servicio.name}}</td>

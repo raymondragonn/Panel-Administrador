@@ -10,9 +10,9 @@ import { RegistroUsuarioComponent } from './components/pages/registro-usuario/re
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: ProfileAuthenticationPageComponent},
-  {path: 'admin', component: ServicesListComponent,canActivate: [authGuard]},
-  {path: 'formulario/:id', component: FormularioEditComponent,canActivate: [authGuard]},
-  {path: 'formulario', component: FormularioEditComponent,canActivate: [authGuard]},
+  {path: 'admin', component: ServicesListComponent},//canActivate: [authGuard]
+  {path: 'formulario/:id', component: FormularioEditComponent},
+  {path: 'formulario', component: FormularioEditComponent},
   {path: 'register', component: RegistroUsuarioComponent},
   {path: '**', component: NotFoundComponent} 
 ];

@@ -15,13 +15,13 @@ export class UserService {
   //   return this.http.get()
   // }
 
-  login(username: string, password: string){
-    return this.http.post( `${BASE_URL}`,{username,password})
+  login(email: string, password: string){
+    return this.http.post( `${BASE_URL}/login`,{email,password})
   }
 
-  createUser(name: string, email: string, password: string, passwordConfirm: string){
+  signup(name: string, email: string, password: string, passwordConfirm: string){
     console.log(BASE_URL); 
-    return this.http.post( `${BASE_URL}`, {name,email,password,passwordConfirm})
+    return this.http.post( `${BASE_URL}/signup`, {name,email,password,passwordConfirm})
   }
   
 }

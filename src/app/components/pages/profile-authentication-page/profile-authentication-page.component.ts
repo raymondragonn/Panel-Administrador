@@ -14,7 +14,7 @@ export class ProfileAuthenticationPageComponent implements OnInit {
   constructor(private router: Router,private notifier: NotifierService,private fb: FormBuilder,private userService: UserService) {
     this.notifier = notifier;
     this.formLogin = this.fb.group({
-      userName: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required]],
     })
   }
@@ -31,16 +31,14 @@ export class ProfileAuthenticationPageComponent implements OnInit {
       this.formLogin.markAllAsTouched();
       return;
     }else{
-      this.userService.login(this.formLogin.value.userName,this.formLogin.value.password).subscribe( (data: any) => {
-        
-        let respuesta = data[0];
+      this.userService.login(this.formLogin.value.email,this.formLogin.value.password).subscribe( (data: any) => {
         console.log(data);
-        if(respuesta == 'error'){
-          this.showNotification('error', 'Error checa tus credenciales sean las correctas');
-        }else{
-          this.showNotification('success', 'Acesso Correcto');
-          localStorage.setItem('usuario', JSON.stringify(data.user.user))
+        if(data.status == 'success'){
           this.router.navigate(['/admin']);
+          // localStorage.setItem('token', data.data.token);
+          localStorage.setItem('usuario', JSON.stringify(data.data.user.name));
+        }else{
+          this.showNotification('error', data.message);
         }
       })
     }

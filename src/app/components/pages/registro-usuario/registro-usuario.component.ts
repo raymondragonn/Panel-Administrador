@@ -25,6 +25,8 @@ export class RegistroUsuarioComponent {
     ngOnInit(): void {
       
     }
+
+  
     public showNotification( type: string, message: string ): void {
       this.notifier.notify( type, message );
     }
@@ -35,9 +37,18 @@ export class RegistroUsuarioComponent {
         return;
       }else{
         let formulario = this.formLogin.value;
-        this.userService.createUser(formulario.name,formulario.email,formulario.password,formulario.repeatPassword).subscribe( (data: any) => {
+        this.userService.signup(formulario.name,formulario.email,formulario.password,formulario.repeatPassword).subscribe( (data: any) => {
+          // console.log(data.status == 'success');
           console.log(data);
+          if(data.status == 'success'){
+            console.log(data.status)
+            this.router.navigate(['/login']);
+            this.showNotification('success', 'Acesso Correcto');
+          }else{
+            console.log('error');
+            this.showNotification('error', 'Error checa tus credenciales sean las correctas');
 
+          }
           // let respuesta = data[0];
           // console.log(data);
           // if(respuesta == 'error'){

@@ -27,8 +27,11 @@ export class ServicesListComponent {
 
   ngOnInit(){
     this.servicioServices.getServicios().subscribe((data: any) => {
-      this.servicios = data;
-      console.log(this.servicios);
+      console.log(data.data.service);
+      this.servicios = data.data.service;
+      // console.log(this.servicios);
+      // this.servicios = data;
+      // console.log(this.servicios);
     })
   }
 

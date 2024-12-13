@@ -9,9 +9,9 @@
                     <form [formGroup]="formLogin" (ngSubmit)="mandarFormulario()">
                         <div class="form-group">
                             <!--<label>Usuario</label>-->
-                            <input type="text" formControlName="userName" class="form-control" placeholder="Usuario">
-                            <div *ngIf="formLogin.get('userName')?.invalid && formLogin.get('userName')?.touched" class="text-danger">
-                                <span style="font-style: italic;">Ingresa tu usuario</span>
+                            <input type="text" formControlName="email" class="form-control" placeholder="Email">
+                            <div *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched" class="text-danger">
+                                <span style="font-style: italic;">Ingresa tu email</span>
                             </div>
                         </div>
                         <div class="form-group">
