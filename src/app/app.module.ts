@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { NotifierModule } from 'angular-notifier';
+// import { NotifierModule } from 'angular-notifier';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
@@ -49,7 +49,7 @@ import { RegistroUsuarioComponent } from './components/pages/registro-usuario/re
         FormsModule,
         NgxPaginationModule,
         HttpClientModule,
-        NotifierModule,
+        // NotifierModule,
         ReactiveFormsModule,
     ],
     providers: [],

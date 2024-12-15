@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NotifierService } from 'angular-notifier';
+// import { NotifierService } from 'angular-notifier';
 import { Router } from '@angular/router';
 import { UserService } from '../../common/services/user.service';
 
@@ -12,8 +12,8 @@ import { UserService } from '../../common/services/user.service';
 export class RegistroUsuarioComponent {
   formLogin: FormGroup;
   
-    constructor(private router: Router,private notifier: NotifierService,private fb: FormBuilder,private userService: UserService) {
-      this.notifier = notifier;
+    constructor(private router: Router,private fb: FormBuilder,private userService: UserService) {
+      // this.notifier = notifier;
       this.formLogin = this.fb.group({
         name: ['', [Validators.required]],
         email: ['', [Validators.required]],
@@ -28,7 +28,7 @@ export class RegistroUsuarioComponent {
 
   
     public showNotification( type: string, message: string ): void {
-      this.notifier.notify( type, message );
+      // this.notifier.notify( type, message );
     }
   
     crearCuenta(){

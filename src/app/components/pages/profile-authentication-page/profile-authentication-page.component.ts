@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../common/services/user.service';
-import { NotifierService } from 'angular-notifier';
+// import { NotifierModule, NotifierOptions, NotifierService  } from 'angular-notifier';
 import { Router } from '@angular/router';
+// import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
+import { Notify } from 'notiflix';
+
+
 @Component({
   selector: 'app-profile-authentication-page',
   templateUrl: './profile-authentication-page.component.html',
@@ -11,8 +15,8 @@ import { Router } from '@angular/router';
 export class ProfileAuthenticationPageComponent implements OnInit {
   formLogin: FormGroup;
 
-  constructor(private router: Router,private notifier: NotifierService,private fb: FormBuilder,private userService: UserService) {
-    this.notifier = notifier;
+  constructor(private router: Router,private fb: FormBuilder,private userService: UserService) {
+    
     this.formLogin = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -20,11 +24,9 @@ export class ProfileAuthenticationPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    Notify.success('Sol lucet omnibus');
   }
-  public showNotification( type: string, message: string ): void {
-		this.notifier.notify( type, message );
-	}
+  
 
   mandarFormulario(){
     if(this.formLogin.invalid){
@@ -38,7 +40,7 @@ export class ProfileAuthenticationPageComponent implements OnInit {
           // localStorage.setItem('token', data.data.token);
           localStorage.setItem('usuario', JSON.stringify(data.data.user.name));
         }else{
-          this.showNotification('error', data.message);
+          // this.showNotification('error', data.message);
         }
       })
     }

@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
-import { NotifierService } from 'angular-notifier';
+// import { NotifierService } from 'angular-notifier';
 import { ServiciosService } from '../../common/services/servicios.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FormularioEditComponent implements OnInit{
     servicioForm: FormGroup;
 
-  private readonly notifier: NotifierService;
+  
     productsUrl: any = [];
 
     name: any;
@@ -30,7 +30,7 @@ export class FormularioEditComponent implements OnInit{
     constructor(
         private formBuilder: UntypedFormBuilder,
         private http: HttpClient,
-        notifierService: NotifierService,
+    
         private servicioServices: ServiciosService,
         private route: ActivatedRoute,
         private router: Router
@@ -42,7 +42,7 @@ export class FormularioEditComponent implements OnInit{
             description: ['', [Validators.required]],
             information: ['', [Validators.required]],
         });
-        this.notifier = notifierService;
+    
     }
 
     ngOnInit(){
@@ -96,15 +96,15 @@ export class FormularioEditComponent implements OnInit{
                             let respuesta = data[0];
                             console.log(data);
                             if (respuesta === 'error') {
-                                this.notifier.notify('error', 'Ups! Hubo un error al guardar cambios');
+                                // this.notifier.notify('error', 'Ups! Hubo un error al guardar cambios');
                             } else {
-                                this.notifier.notify('success', 'Guardado exitosamente');
+                                // this.notifier.notify('success', 'Guardado exitosamente');
                                 this.router.navigate(['/admin']);
                             }
                         },
                         (error: HttpErrorResponse) => {
                             console.error('Error:', error);
-                            this.notifier.notify('error', 'Error en el servidor: ' + error.message);
+                            // this.notifier.notify('error', 'Error en el servidor: ' + error.message);
                         }
                     );
             } else {
@@ -114,15 +114,15 @@ export class FormularioEditComponent implements OnInit{
                             let respuesta = data[0];
                             console.log(data);
                             if (respuesta === 'error') {
-                                this.notifier.notify('error', 'Ups! Hubo un error al crear el servicio');
+                                // this.notifier.notify('error', 'Ups! Hubo un error al crear el servicio');
                             } else {
-                                this.notifier.notify('success', 'Creado exitosamente');
+                                // this.notifier.notify('success', 'Creado exitosamente');
                                 this.router.navigate(['/admin']);
                             }
                         },
                         (error: HttpErrorResponse) => {
                             console.error('Error:', error);
-                            this.notifier.notify('error', 'Error en el servidor: ' + error.message);
+                            // this.notifier.notify('error', 'Error en el servidor: ' + error.message);
                         }
                     );
             }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ServiciosService } from '../../common/services/servicios.service';
-import { NotifierService } from 'angular-notifier';
+// import { NotifierService } from 'angular-notifier';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -10,7 +10,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 })
 export class ServicesListComponent {
 
-  private readonly notifier: NotifierService;
+  // private readonly notifier: NotifierService;
   servicios: Array<any> = [];
 
   id: any;
@@ -21,8 +21,8 @@ export class ServicesListComponent {
   category: any;
   imgServicio: any;
 
-  constructor(private servicioServices: ServiciosService, notifierService: NotifierService,) {
-      this.notifier = notifierService;
+  constructor(private servicioServices: ServiciosService,) {
+      // this.notifier = notifierService;
   }
 
   ngOnInit(){
@@ -53,15 +53,15 @@ export class ServicesListComponent {
                 console.log('Respuesta del servidor:', data);
                 
                 if (respuesta === 'error') {
-                    this.notifier.notify('error', 'No se ha podido eliminar el servicio');
+                    // this.notifier.notify('error', 'No se ha podido eliminar el servicio');
                 } else {
-                    this.notifier.notify('success', 'Eliminado exitosamente');
+                    // this.notifier.notify('success', 'Eliminado exitosamente');
                     this.loadServices();
                 }
             },
             (error: HttpErrorResponse) => {
                 console.error('Error:', error);
-                this.notifier.notify('error', 'Error en el servidor: ' + error.message);
+                // this.notifier.notify('error', 'Error en el servidor: ' + error.message);
             }
         );
     }
@@ -74,7 +74,7 @@ export class ServicesListComponent {
       }, 
       (error: HttpErrorResponse) => {
         console.error('Error:', error);
-        this.notifier.notify('error', 'Error al cargar los servicios: ' + error.message);
+        // this.notifier.notify('error', 'Error al cargar los servicios: ' + error.message);
       }
     );
   }
