@@ -24,7 +24,7 @@ export class ProfileAuthenticationPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    Notify.success('Sol lucet omnibus');
+    // Notify.success('Sol lucet omnibus');
   }
   
 
@@ -36,11 +36,14 @@ export class ProfileAuthenticationPageComponent implements OnInit {
       this.userService.login(this.formLogin.value.email,this.formLogin.value.password).subscribe( (data: any) => {
         console.log(data);
         if(data.status == 'success'){
+          Notify.success('Creacion del usuario exitosa inicia session');
           this.router.navigate(['/admin']);
-          // localStorage.setItem('token', data.data.token);
           localStorage.setItem('usuario', JSON.stringify(data.data.user.name));
+          
         }else{
           // this.showNotification('error', data.message);
+          console.log(data.status)
+          Notify.success('Error al crear usuario email o contraseña no coinciden');
         }
       })
     }

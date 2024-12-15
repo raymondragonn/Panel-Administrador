@@ -3,6 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { NotifierService } from 'angular-notifier';
 import { Router } from '@angular/router';
 import { UserService } from '../../common/services/user.service';
+import { Notify } from 'notiflix';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+
+export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const password = control.get('password');
+  const repeatPassword = control.get('repeatPassword');
+
+  return password && repeatPassword && password.value !== repeatPassword.value ? { 'passwordMismatch': true } : null;
+};
 
 @Component({
   selector: 'app-registro-usuario',
@@ -16,24 +25,29 @@ export class RegistroUsuarioComponent {
       // this.notifier = notifier;
       this.formLogin = this.fb.group({
         name: ['', [Validators.required]],
-        email: ['', [Validators.required]],
-        password: ['', [Validators.required]],
-        repeatPassword: ['', [Validators.required]],
-      })
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        repeatPassword: ['', [Validators.required, Validators.minLength(8)]],
+      }, { validators: passwordMatchValidator });
     }
+
+    
   
     ngOnInit(): void {
-      
+      this.showNotification('success', 'Acesso Correcto');
     }
 
   
     public showNotification( type: string, message: string ): void {
       // this.notifier.notify( type, message );
     }
+
+
   
     crearCuenta(){
       if(this.formLogin.invalid){
         this.formLogin.markAllAsTouched();
+        Notify.failure('Las contraseñas no coinciden o son menores a 8 caracteres');
         return;
       }else{
         let formulario = this.formLogin.value;
@@ -42,11 +56,12 @@ export class RegistroUsuarioComponent {
           console.log(data);
           if(data.status == 'success'){
             console.log(data.status)
+            Notify.success('Creacion del usuario exitosa inicia session');
             this.router.navigate(['/login']);
-            this.showNotification('success', 'Acesso Correcto');
+            
           }else{
-            console.log('error');
-            this.showNotification('error', 'Error checa tus credenciales sean las correctas');
+            console.log(data.status)
+           
 
           }
           // let respuesta = data[0];
