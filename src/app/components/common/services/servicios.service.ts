@@ -44,16 +44,7 @@ export class ServiciosService {
     return this.http.post(`${BASE_URL}`, {name, category, price, description, information });
   }
 
-  deleteService(payload: { id: string }): Observable<any> {
-    const headers = new HttpHeaders({
-        'Content-Type': 'application/json'
-    });
-
-    const options = {
-        headers: headers,
-        body: payload
-    };
-
-    return this.http.delete(`${BASE_URL}/services`, options);
+  deleteService(id: any){
+    return this.http.delete(`${BASE_URL}/${id}`);
   };
 }
