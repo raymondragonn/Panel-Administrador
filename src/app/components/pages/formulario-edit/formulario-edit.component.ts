@@ -4,6 +4,7 @@ import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 // import { NotifierService } from 'angular-notifier';
 import { ServiciosService } from '../../common/services/servicios.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Notify } from 'notiflix';
 
 @Component({
   selector: 'app-formulario-edit',
@@ -22,10 +23,10 @@ export class FormularioEditComponent implements OnInit{
     information: any;
     category: any;
 
-    imgServicio: any;
-
     id: any = null;
     titulo: string = '';
+    servicio: any;
+    imgServicio: any;
 
     constructor(
         private formBuilder: UntypedFormBuilder,
@@ -47,6 +48,7 @@ export class FormularioEditComponent implements OnInit{
 
     ngOnInit(){
         this.id = this.route.snapshot.paramMap.get('id');  
+        console.log(this.id);
         if(this.id){
             this.titulo = 'Modificar servicio';
         }else{
@@ -55,20 +57,21 @@ export class FormularioEditComponent implements OnInit{
         
         if(this.id){
             this.servicioServices.getProductoById(this.id).subscribe((data: any) => {
-                console.log(data);
-                this.name = data.name;
-                this.category = data.category;
-                this.description = data.description;
-                this.price = data.price;
-                this.information = data.information;
-                this.imgServicio = data.img;
-
+                this.servicio = data.data.service[0];
+ 
+                let name = this.servicio.name;
+                let categoria = this.servicio.category[0];
+                let description = this.servicio.description;
+                let price = this.servicio.price;
+                let information = this.servicio.information[0];
+                this.imgServicio = this.servicio.images.primary[0];
+  
                 this.servicioForm = this.formBuilder.group({
-                    name: [this.name, Validators.required],
-                    category: [this.category, Validators.required],
-                    price: [this.price, [Validators.required]],
-                    description: [this.description, [Validators.required]],
-                    information: [this.information, [Validators.required]],
+                    name: [name, Validators.required],
+                    category: [categoria, Validators.required],
+                    price: [price, [Validators.required]],
+                    description: [description, [Validators.required]],
+                    information: [information, [Validators.required]],
                 });
             });
         }
@@ -78,11 +81,12 @@ export class FormularioEditComponent implements OnInit{
         window.history.back();
     }
 
-    onSubmit(): void {
+    updateServicio(): void {
         console.log(this.id);
         if (this.servicioForm.invalid) {
             this.servicioForm.markAllAsTouched();
         } else {
+            let id = this.servicio.id;
             const name = this.servicioForm.get('name')?.value;
             const category = this.servicioForm.get('category')?.value;
             const price = this.servicioForm.get('price')?.value;
@@ -90,14 +94,16 @@ export class FormularioEditComponent implements OnInit{
             const information = this.servicioForm.get('information')?.value;
 
             if (this.id) {
-                this.servicioServices.updateService(this.id, name, category, price, description, information)
+                this.servicioServices.updateService(id, name, category, price, description, information)
                     .subscribe(
                         (data: any) => {
                             let respuesta = data[0];
                             console.log(data);
                             if (respuesta === 'error') {
+                                Notify.failure('Error en la actualizacion del servicio');
                                 // this.notifier.notify('error', 'Ups! Hubo un error al guardar cambios');
                             } else {
+                                Notify.success('Servicio actualizado exitosamente');
                                 // this.notifier.notify('success', 'Guardado exitosamente');
                                 this.router.navigate(['/admin']);
                             }
