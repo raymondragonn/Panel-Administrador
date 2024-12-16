@@ -4,6 +4,7 @@ import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 // import { NotifierService } from 'angular-notifier';
 import { ServiciosService } from '../../common/services/servicios.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Notify } from 'notiflix';
 
 @Component({
   selector: 'app-formulario-edit',
@@ -97,8 +98,10 @@ export class FormularioEditComponent implements OnInit{
                             console.log(data);
                             if (respuesta === 'error') {
                                 // this.notifier.notify('error', 'Ups! Hubo un error al guardar cambios');
+                                Notify.failure('Ups! Hubo un error al guardar cambios');
                             } else {
                                 // this.notifier.notify('success', 'Guardado exitosamente');
+                                Notify.success('Guardado exitosamente');
                                 this.router.navigate(['/admin']);
                             }
                         },
@@ -115,13 +118,16 @@ export class FormularioEditComponent implements OnInit{
                             console.log(data);
                             if (respuesta === 'error') {
                                 // this.notifier.notify('error', 'Ups! Hubo un error al crear el servicio');
+                                Notify.failure('Ups! Hubo un error al crear el servicio');
                             } else {
                                 // this.notifier.notify('success', 'Creado exitosamente');
+                                Notify.success('Creado exitosamente');
                                 this.router.navigate(['/admin']);
                             }
                         },
                         (error: HttpErrorResponse) => {
                             console.error('Error:', error);
+                            Notify.warning('Error en el servidor: ' + error.message);
                             // this.notifier.notify('error', 'Error en el servidor: ' + error.message);
                         }
                     );
