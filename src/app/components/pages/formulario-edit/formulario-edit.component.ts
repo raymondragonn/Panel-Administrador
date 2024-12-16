@@ -86,7 +86,6 @@ export class FormularioEditComponent implements OnInit{
         if (this.servicioForm.invalid) {
             this.servicioForm.markAllAsTouched();
         } else {
-            let id = this.servicio.id;
             const name = this.servicioForm.get('name')?.value;
             const category = this.servicioForm.get('category')?.value;
             const price = this.servicioForm.get('price')?.value;
@@ -94,17 +93,16 @@ export class FormularioEditComponent implements OnInit{
             const information = this.servicioForm.get('information')?.value;
 
             if (this.id) {
+                let id = this.servicio.id;
                 this.servicioServices.updateService(id, name, category, price, description, information)
                     .subscribe(
                         (data: any) => {
                             let respuesta = data[0];
                             console.log(data);
                             if (respuesta === 'error') {
-                                Notify.failure('Error en la actualizacion del servicio');
                                 // this.notifier.notify('error', 'Ups! Hubo un error al guardar cambios');
                                 Notify.failure('Ups! Hubo un error al guardar cambios');
                             } else {
-                                Notify.success('Servicio actualizado exitosamente');
                                 // this.notifier.notify('success', 'Guardado exitosamente');
                                 Notify.success('Guardado exitosamente');
                                 this.router.navigate(['/admin']);
