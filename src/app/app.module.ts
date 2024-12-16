@@ -22,7 +22,6 @@ import { ProfileAuthenticationPageComponent } from './components/pages/profile-a
 import { ServicesListComponent } from './components/pages/services-list/services-list.component';
 import { FormularioEditComponent } from './components/pages/formulario-edit/formulario-edit.component';
 import { RegistroUsuarioComponent } from './components/pages/registro-usuario/registro-usuario.component';
-//import { EmailService } from './common/services/email.service';
 
 @NgModule({
     declarations: [
