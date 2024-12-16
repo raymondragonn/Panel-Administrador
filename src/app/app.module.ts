@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { NotifierModule } from 'angular-notifier';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,7 +22,47 @@ import { ProfileAuthenticationPageComponent } from './components/pages/profile-a
 import { ServicesListComponent } from './components/pages/services-list/services-list.component';
 import { FormularioEditComponent } from './components/pages/formulario-edit/formulario-edit.component';
 import { RegistroUsuarioComponent } from './components/pages/registro-usuario/registro-usuario.component';
-//import { EmailService } from './common/services/email.service';
+
+const customNotifierOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'right',
+      distance: 12
+    },
+    vertical: {
+      position: 'top',
+      distance: 12,
+      gap: 10
+    }
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: false,
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 
 @NgModule({
     declarations: [
@@ -49,7 +89,7 @@ import { RegistroUsuarioComponent } from './components/pages/registro-usuario/re
         FormsModule,
         NgxPaginationModule,
         HttpClientModule,
-        NotifierModule,
+        NotifierModule.withConfig(customNotifierOptions),
         ReactiveFormsModule,
     ],
     providers: [],

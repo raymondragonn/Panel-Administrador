@@ -5,13 +5,13 @@
             <div class="col-lg-6 col-md-12">
                 <div class="login-form">
                     <h2 style="text-align: center; margin-bottom: 0%;">Crea una Cuenta</h2>
-                    <p style="text-align: center; margin-bottom: 8%;">Ingresa tus datos para <span style="font-weight: bold;">Crear cuenta</span></p>
+                    <p style="text-align: center; margin-bottom: 8%;">Ingresa tus datos para <span style="font-weight: bold;">crear una nueva cuenta</span></p>
                     <form [formGroup]="formLogin" (ngSubmit)="crearCuenta()">
                         <div class="form-group">
                             <!--<label>Usuario</label>-->
-                            <input type="text" formControlName="name" class="form-control" placeholder="Nombre">
+                            <input type="text" formControlName="name" class="form-control" placeholder="Nombre completo">
                             <div *ngIf="formLogin.get('name')?.invalid && formLogin.get('name')?.touched" class="text-danger">
-                                <span style="font-style: italic;">Ingresa un nombre</span>
+                                <span style="font-style: italic;">Ingresa tu nombre completo</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -26,15 +26,15 @@
                             <input type="password" formControlName="password" class="form-control" placeholder="Contraseña">
                             <div *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched" class="text-danger">
                                 
-                                <span style="font-style: italic;">Ingresa tu contraseña</span>
+                                <span style="font-style: italic;">Ingresa tu contraseña (8 caracteres)</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <!--<label>Contraseña</label>-->
-                            <input type="password" formControlName="repeatPassword" class="form-control" placeholder="Repite Contraseña">
+                            <input type="password" formControlName="repeatPassword" class="form-control" placeholder="Reescribe contraseña">
                             <div *ngIf="formLogin.get('repeatPassword')?.invalid && formLogin.get('repeatPassword')?.touched" class="text-danger">
                                 
-                                <span style="font-style: italic;">Repite la Contraseña</span>
+                                <span style="font-style: italic;">Ingresa nuevamente la constraseña (8 caracteres)</span>
                             </div>
                         </div>
                         <!-- <div class="row align-items-center">
@@ -46,9 +46,9 @@
                             
                         </div> -->
                         <div class="row align-items-center " style="margin-bottom: 1rem;  " (click)="IniciarSession()" >
-                            <span style="cursor: pointer; color: blue;">Ya tengo Cuenta</span>
+                            <span style="cursor: pointer; color: blue;">Ya tengo cuenta</span>
                         </div>
-                        <button type="submit" style="width: 50%; display: block; margin: 0 auto;">Crear Cuenta</button>
+                        <button type="submit" style="width: 50%; display: block; margin: 0 auto;">Registrarme</button>
                     </form>
                 </div>
             </div>
