@@ -17,7 +17,7 @@ export class ServiciosService {
   }
 
   getProductoById(id: any){
-    return this.http.get(`${BASE_URL}?id=${id}`);
+    return this.http.get(`${BASE_URL}/?slug=${id}`);
   }
 
   getProductoByCategory(category: string){
@@ -37,7 +37,7 @@ export class ServiciosService {
   }
 
   updateService(id: number, name: string, category: string, price: number, description: string, information: string): Observable<any> {
-    return this.http.put<any>(`${BASE_URL}`, { id, name, category, price, description, information });
+    return this.http.patch<any>(`${BASE_URL}/`+id+"", { name, category, price, description, information });
   }
 
   createService(name: string, category: string, price: number, description: string, information: string){

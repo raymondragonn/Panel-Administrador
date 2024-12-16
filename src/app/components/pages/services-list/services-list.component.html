@@ -55,7 +55,7 @@
                             <td>{{servicio.category}}</td>
                             <td>{{servicio.price | currency:'MXN':'symbol':'1.2-2'}}</td>
                             <td>
-                                <a routerLink="/formulario/{{servicio.id}}" class="default-btn2 with-icon" style="margin-right: 8px; border-radius: 10rem;">
+                                <a routerLink="/formulario/{{servicio.slug}}" class="default-btn2 with-icon" style="margin-right: 8px; border-radius: 10rem;">
                                     Editar <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                                 <a (click)="deleteService(servicio)" class="default-btn3 with-icon" style="border-radius: 10rem;">
