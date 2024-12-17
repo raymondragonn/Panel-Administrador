@@ -86,7 +86,6 @@ export class FormularioEditComponent implements OnInit{
         if (this.servicioForm.invalid) {
             this.servicioForm.markAllAsTouched();
         } else {
-            
             const name = this.servicioForm.get('name')?.value;
             const category = this.servicioForm.get('category')?.value;
             const price = this.servicioForm.get('price')?.value;
@@ -101,11 +100,11 @@ export class FormularioEditComponent implements OnInit{
                             let respuesta = data[0];
                             console.log(data);
                             if (respuesta === 'error') {
-                                Notify.failure('Error en la actualizacion del servicio');
                                 // this.notifier.notify('error', 'Ups! Hubo un error al guardar cambios');
+                                Notify.failure('Ups! Hubo un error al guardar cambios');
                             } else {
-                                Notify.success('Servicio actualizado exitosamente');
                                 // this.notifier.notify('success', 'Guardado exitosamente');
+                                Notify.success('Guardado exitosamente');
                                 this.router.navigate(['/admin']);
                             }
                         },
@@ -122,13 +121,16 @@ export class FormularioEditComponent implements OnInit{
                             console.log(data);
                             if (respuesta === 'error') {
                                 // this.notifier.notify('error', 'Ups! Hubo un error al crear el servicio');
+                                Notify.failure('Ups! Hubo un error al crear el servicio');
                             } else {
                                 // this.notifier.notify('success', 'Creado exitosamente');
+                                Notify.success('Creado exitosamente');
                                 this.router.navigate(['/admin']);
                             }
                         },
                         (error: HttpErrorResponse) => {
                             console.error('Error:', error);
+                            Notify.warning('Error en el servidor: ' + error.message);
                             // this.notifier.notify('error', 'Error en el servidor: ' + error.message);
                         }
                     );

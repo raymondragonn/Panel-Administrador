@@ -37,11 +37,13 @@ export class ServicesListComponent {
   }
 
   deleteService(servicio: any): void {
-    this.servicioServices.deleteService(servicio.id).subscribe( data =>{
-      Notify.success('Servicio eliminado correctamente');
-      window.location.reload();
-    });
-  } 
+    if (confirm(`¿Está seguro de que desea eliminar el servicio: ${servicio.name}?`)) {
+      this.servicioServices.deleteService(servicio.id).subscribe(data => {
+        Notify.success('Servicio eliminado exitosamente');
+        window.location.reload();
+      });
+    }
+  }
 
   loadServices(): void {
     this.servicioServices.getServicios().subscribe(

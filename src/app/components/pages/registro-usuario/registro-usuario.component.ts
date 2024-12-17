@@ -56,7 +56,7 @@ export class RegistroUsuarioComponent {
           console.log(data);
           if(data.status == 'success'){
             console.log(data.status)
-            Notify.success('Creacion del usuario exitosa inicia session');
+            Notify.success('Registro de usuario exitoso');
             this.router.navigate(['/login']);
             
           }else{

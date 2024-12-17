@@ -36,7 +36,7 @@ export class ProfileAuthenticationPageComponent implements OnInit {
       this.userService.login(this.formLogin.value.email,this.formLogin.value.password).subscribe( (data: any) => {
         console.log(data);
         if(data.status == 'success'){
-          Notify.success('Creacion del usuario exitosa inicia session');
+          Notify.success('Inicio de sesión exitoso');
           this.router.navigate(['/admin']);
           localStorage.setItem('usuario', JSON.stringify(data.data.user.name));
           
