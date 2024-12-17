@@ -86,7 +86,7 @@ export class FormularioEditComponent implements OnInit{
         if (this.servicioForm.invalid) {
             this.servicioForm.markAllAsTouched();
         } else {
-            let id = this.servicio.id;
+            
             const name = this.servicioForm.get('name')?.value;
             const category = this.servicioForm.get('category')?.value;
             const price = this.servicioForm.get('price')?.value;
@@ -94,6 +94,7 @@ export class FormularioEditComponent implements OnInit{
             const information = this.servicioForm.get('information')?.value;
 
             if (this.id) {
+                let id = this.servicio.id;
                 this.servicioServices.updateService(id, name, category, price, description, information)
                     .subscribe(
                         (data: any) => {
